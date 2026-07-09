@@ -26,7 +26,7 @@
   html.nojs .reveal, html.nojs .tl-item{opacity:1 !important;transform:none !important}
   .js-banner{display:none}
   html.nojs .js-banner{display:block;background:#3d2a10;border-bottom:1px solid #8a5a2a;color:#F2C48D;
-    padding:12px 16px;text-align:center;font-size:13px;line-height:1.5}
+    padding:12px 26px;text-align:center;font-size:13px;line-height:1.5}
 
   /* ---------- NAV ---------- */
   nav{position:sticky;top:0;z-index:100;background:rgba(14,16,19,.94);
@@ -52,7 +52,7 @@
   .page.active{display:block}
   @keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
   .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
-  @media(max-width:640px){ .wrap{padding:0 22px} }
+  @media(max-width:640px){ .wrap{padding:0 max(28px, env(safe-area-inset-left))} }
 
   /* ---------- HERO (marca) ---------- */
   .hero{position:relative;padding:70px 0 60px;text-align:center;
@@ -111,7 +111,7 @@
   .models-head{padding:48px 0 8px;text-align:center}
   .models-head p{color:var(--mut);max-width:560px;margin:0 auto;padding:0 8px}
   .filters{display:flex;gap:8px;justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;
-    -webkit-overflow-scrolling:touch;margin:26px -18px 4px;padding:2px 18px 8px}
+    -webkit-overflow-scrolling:touch;margin:26px -28px 4px;padding:2px 28px 8px}
   @media(min-width:760px){ .filters{justify-content:center;flex-wrap:wrap;overflow:visible;margin:26px 0 4px;padding:0} }
   html.nojs .filters{display:none}
   .chip{background:var(--panel2);border:1px solid var(--line);color:var(--mut);padding:10px 18px;
@@ -189,9 +189,9 @@
     .strip{grid-template-columns:repeat(3,1fr)}
     .strip div:nth-child(3n){border-right:none}
     .strip div{border-bottom:1px solid var(--line)}
-    .modal{padding:10px max(10px, env(safe-area-inset-right)) 26px max(10px, env(safe-area-inset-left))}
-    .info{padding:24px 20px 22px}
-    .ficha{padding:20px 18px 26px}
+    .modal{padding:12px max(14px, env(safe-area-inset-right)) 28px max(14px, env(safe-area-inset-left))}
+    .info{padding:26px 24px 24px}
+    .ficha{padding:22px 22px 28px}
   }
   .ficha{padding:24px 24px 30px}
   .ficha h3{font-size:13px;letter-spacing:3px;color:var(--mut);text-transform:uppercase;margin-bottom:14px}
@@ -201,7 +201,7 @@
   .acc summary::-webkit-details-marker{display:none}
   .acc summary:after{content:"+";color:var(--red);font-size:20px;transition:.25s}
   .acc[open] summary:after{transform:rotate(45deg)}
-  .kv{display:grid;grid-template-columns:1fr 1fr;gap:0 26px;padding:4px 18px 16px}
+  .kv{display:grid;grid-template-columns:1fr 1fr;gap:0 26px;padding:4px 20px 16px}
   .kv div{display:flex;justify-content:space-between;gap:14px;padding:8px 0;border-bottom:1px dashed #2a3038;font-size:13px}
   .kv b{color:var(--mut);font-weight:normal;flex-shrink:0}
   .kv span{text-align:right}
@@ -227,7 +227,7 @@
   .best{color:var(--gold);font-weight:bold}
   .best:after{content:" ●";font-size:9px;vertical-align:2px}
 
-  footer{border-top:1px solid var(--line);padding:30px max(22px, env(safe-area-inset-left));text-align:center;background:var(--panel)}
+  footer{border-top:1px solid var(--line);padding:30px max(28px, env(safe-area-inset-left));text-align:center;background:var(--panel)}
   footer b{font-family:Georgia,serif;letter-spacing:1px;font-size:14px}
   footer p{color:var(--mut);font-size:12px;margin-top:6px}
   .reveal{opacity:0;transform:translateY(22px);transition:.7s ease}
