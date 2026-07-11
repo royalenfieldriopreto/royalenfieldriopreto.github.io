@@ -271,8 +271,10 @@
   .rc-eco{background:linear-gradient(90deg,rgba(201,168,92,.16),transparent);border-left:3px solid var(--gold);
     padding:11px 18px;font-size:13px;color:#EAD9AF}
   .rc-eco b{color:var(--gold);font-size:15px}
-  .rc-cc{background:linear-gradient(90deg,rgba(239,49,32,.18),transparent);border-left:3px solid var(--red);
-    padding:10px 18px;font-size:13px;color:#F3B0A8;animation:ccblink 1.5s ease-in-out infinite}
+  .rc-cc{background:linear-gradient(90deg,rgba(239,49,32,.22),rgba(239,49,32,.05));border-left:4px solid var(--red);
+    padding:10px 18px;font-size:13px;color:#F3B0A8;animation:ccblink 1.5s ease-in-out infinite;
+    margin:10px -18px 10px;display:flex;align-items:center;gap:10px}
+  .rc-cc .ic{font-size:22px;line-height:1;flex-shrink:0}
   .rc-cc b{color:#FF5A4A;font-size:15px}
   @keyframes ccblink{0%,100%{opacity:1}50%{opacity:.4}}
   @media (prefers-reduced-motion: reduce){ .rc-cc{animation:none} }
@@ -721,6 +723,11 @@ function vsCell(reVal, rivVal, mode){
 function rivalCard(c, m, re){
   var custo = custoReal(c);
   var eco = custo - re.tabela;
+  var reCC = firstNum(String(re.cilindrada));
+  var ccDiff = reCC !== null ? Math.round(reCC - c.cc) : 0;
+  var ccWarn = ccDiff >= 20
+    ? '<div class="rc-cc"><span class="ic">⚠</span><span>Aqui você leva <b>'+ccDiff+' cilindradas a menos</b></span></div>'
+    : '';
   var rows = [
     ['Preço de tabela', fmt0(re.tabela), fmt0(c.preco), null],
     ['Frete', 'Incluso', fmt0(FRETE[c.marca]||0), null],
@@ -742,17 +749,10 @@ function rivalCard(c, m, re){
       }).join('') + '</table>';
   return '<div class="riv-card">'
     + '<div class="rc-top"><div class="rc-brand">'+c.marca+'</div>'
-    + '<div class="rc-name">'+c.modelo+'</div><span class="rc-type">'+c.tipo.toUpperCase()+' • '+c.cc+' CC</span></div>'
+    + '<div class="rc-name">'+c.modelo+'</div>'+ccWarn+'<span class="rc-type">'+c.tipo.toUpperCase()+' • '+c.cc+' CC</span></div>'
     + '<div class="rc-price"><div class="lbl">CUSTO REAL<br>tabela '+fmt0(c.preco)+' + frete '+fmt0(FRETE[c.marca]||0)+'</div>'
     + '<div class="val">'+fmt0(custo)+'</div></div>'
     + (eco>0 ? '<div class="rc-eco">Escolhendo a <b>'+m.model+'</b> você economiza <b>'+fmt0(eco)+'</b></div>' : '')
-    + (function(){
-        var reCC = firstNum(String(re.cilindrada));
-        var diff = reCC !== null ? Math.round(reCC - c.cc) : 0;
-        return diff >= 20
-          ? '<div class="rc-cc">⚠ Aqui você leva <b>'+diff+' cilindradas a menos</b></div>'
-          : '';
-      })()
     + '<details><summary>Comparar ficha completa</summary>'+tbl+'</details>'
     + '</div>';
 }
